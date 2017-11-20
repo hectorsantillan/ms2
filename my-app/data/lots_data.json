@@ -1,0 +1,147 @@
+{
+    "block3lot1": {
+        "index": 0,
+        "name": "Block 3 - Lawn Lot 1",
+        "type": "lawn-lot",
+        "area": "9m²",
+        "block": "block3",
+        "map_points": [
+            {
+                "longitude": 123.999308,
+                "latitude": 10.3005992
+            },
+            {
+                "longitude": 123.9993026,
+                "latitude": 10.3005926
+            },
+            {
+                "longitude": 123.999314,
+                "latitude": 10.300582
+            },
+            {
+                "longitude": 123.99932,
+                "latitude": 10.3005886
+            },
+            {
+                "longitude": 123.999308,
+                "latitude": 10.3005992
+            }
+        ]
+    },
+    "block3lot2": {
+        "index": 1,
+        "name": "Block 3 - Lawn Lot 2",
+        "type": "lawn-lot",
+        "area": "9m²",
+        "block": "block3",
+        "map_points": [
+            {
+                "longitude": 123.9993026,
+                "latitude": 10.3005926
+            },
+            {
+                "longitude": 123.9992969,
+                "latitude": 10.3005853
+            },
+            {
+                "longitude": 123.999308,
+                "latitude": 10.3005754
+            },
+            {
+                "longitude": 123.999314,
+                "latitude": 10.300582
+            },
+            {
+                "longitude": 123.9993026,
+                "latitude": 10.3005926
+            }
+        ]
+    },
+    "block3lot3": {
+        "index": 2,
+        "name": "Block 3 - Lawn Lot 3",
+        "type": "lawn-lot",
+        "area": "9m²",
+        "block": "block3",
+        "map_points": [
+            {
+                "longitude": 123.999308,
+                "latitude": 10.3005754
+            },
+            {
+                "longitude": 123.9992969,
+                "latitude": 10.3005853
+            },
+            {
+                "longitude": 123.9992905,
+                "latitude": 10.3005781
+            },
+            {
+                "longitude": 123.9993019,
+                "latitude": 10.3005682
+            },
+            {
+                "longitude": 123.999308,
+                "latitude": 10.3005754
+            }
+        ]
+    },
+    "block3lot4": {
+        "index": 3,
+        "name": "Block 3 - Lawn Lot 4",
+        "type": "lawn-lot",
+        "area": "9m²",
+        "block": "block3",
+        "map_points": [
+            {
+                "longitude": 123.9992905,
+                "latitude": 10.3005781
+            },
+            {
+                "longitude": 123.9992845,
+                "latitude": 10.3005718
+            },
+            {
+                "longitude": 123.9992956,
+                "latitude": 10.3005619
+            },
+            {
+                "longitude": 123.9993019,
+                "latitude": 10.3005682
+            },
+            {
+                "longitude": 123.9992905,
+                "latitude": 10.3005781
+            }
+        ]
+    },
+    "block3lot5": {
+        "index": 4,
+        "name": "Block 3 - Lawn Lot 5",
+        "type": "lawn-lot",
+        "area": "9m²",
+        "block": "block3",
+        "map_points": [
+            {
+                "longitude": 123.9992845,
+                "latitude": 10.3005718
+            },
+            {
+                "longitude": 123.9992785,
+                "latitude": 10.3005642
+            },
+            {
+                "longitude": 123.9992892,
+                "latitude": 10.3005543
+            },
+            {
+                "longitude": 123.9992956,
+                "latitude": 10.3005619
+            },
+            {
+                "longitude": 123.9992845,
+                "latitude": 10.3005718
+            }
+        ]
+    }
+}

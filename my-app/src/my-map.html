@@ -1,0 +1,215 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/google-map/google-map.html">
+<link rel="import" href="../bower_components/google-map/google-map-poly.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="shared-styles.html">
+<link rel="import" href="my-icons.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../bower_components/polymerfire/firebase-app.html">
+<link rel="import" href="../bower_components/polymerfire/firebase-query.html">
+
+<link rel="import" href="/src/my-rightdrawer.html">
+
+<dom-module id="my-map">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        /* padding: 10px; */
+      }
+
+      /* app-drawer-layout:not([narrow]) [drawer-toggle] {
+        display: none;
+      } */
+
+      app-header {
+        color: rgb(255, 255, 255);
+        background-color: #388E3C;
+      }
+
+      paper-icon-button.menu {
+        margin-right: 16px;
+      }
+
+      app-header-layout {
+        float: right;
+      }
+
+      paper-toast {
+        float: right;
+      }
+    </style>
+
+
+
+    <!-- <firebase-app auth-domain="hpmg-dev.firebaseapp.com" database-url="https://hpmg-dev.firebaseio.com/" api-key="AIzaSyBtlwFGg8lY9Xygh3SilZDGefEVBNS2Ao4">
+    </firebase-app> -->
+
+    <firebase-app auth-domain="hpmg-56df3.firebaseapp.com" database-url="https://hpmg-56df3.firebaseio.com/" api-key="AIzaSyCKxkkMfRQlhG5vTWh8Y_1yNWtMCTa-YPM">
+    </firebase-app>    
+
+
+
+    <app-drawer-layout fullbleed style="width: 100%;" Id="my-map-main-adl">
+      <app-header-layout fullbleed has-scrolling-region>
+        <app-header fixed slot="header">
+          <app-toolbar primary>
+            <paper-icon-button class="menu" icon="my-icons:menu" on-tap="toggleDrawer"></paper-icon-button>
+            <div main-title>Map</div>
+          </app-toolbar>
+        </app-header>
+
+
+        <!-- <iron-ajax auto url="/data/blocks_data.json" last-response="{{blocks}}"></iron-ajax>
+        <iron-ajax auto url="/data/lots_data.json" last-response="{{lots}}"></iron-ajax> -->
+
+        <firebase-query id="query" path="/blocks" data="{{blocks}}">
+        </firebase-query>
+
+        <firebase-query id="query" path="/lots" data="{{lots}}">
+        </firebase-query>        
+
+        
+
+        <google-map latitude="10.3006632" longitude="123.99903661" zoom="18" api-key="AIzaSyDqRHpHpcmEZQNfcTshfmTPy29xDnU1RFU" no-auto-tilt="true"
+          fit-to-markers>
+          <template is="dom-repeat" items="{{blocks}}" as='block'>
+            <google-map-poly closed stroke-weight="0" fill-color="#cbe6a3" fill-opacity="1" id="{{block.$key}}">
+              <template is="dom-repeat" items="{{block.map_points}}" as='point'>
+                <google-map-point longitude="{{point.longitude}}" latitude="{{point.latitude}}"></google-map-point>
+              </template>
+            </google-map-poly>
+          </template>
+
+          <template is="dom-repeat" items="{{lots}}" as='lot'>
+            <google-map-poly closed stroke-color="white" stroke-position="inside" stroke-opacity="1" stroke-weight="1" fill-color="{{lot.color}}"
+              fill-opacity="1" clickable="true" click-events="true" on-google-map-poly-click="polyClicked" mouse-events="true"
+              on-google-map-poly-mouseover="polyMouseOver" on-google-map-poly-mouseout="polyMouseOut" id="{{lot.$key}}">
+
+              <template is="dom-repeat" items="{{lot.map_points}}" as='point'>
+                <google-map-point longitude="{{point.longitude}}" latitude="{{point.latitude}}"></google-map-point>
+              </template>
+
+            </google-map-poly>
+          </template>
+
+        </google-map>
+
+      </app-header-layout>
+
+
+      <my-rightdrawer id="rightdrawer" uid="" style="display: none;"></my-rightdrawer>
+      
+
+    </app-drawer-layout>
+
+
+    
+
+
+  </template>
+
+  <script>
+    class MyMap extends Polymer.Element {
+      static get is() { return 'my-map'; }
+
+      static get properties() {
+        return {
+          narrow: {
+            type: Boolean,
+            notify: true
+          },
+          blocks: {
+            type: Object,
+            observer: "_wew"
+          },
+          lots: {
+            type: Object,
+            observer: "_wew1"
+          },
+          oldUID: String
+        };
+
+      }
+
+      toggleDrawer() {
+        this.dispatchEvent(new CustomEvent('toggleDrawer', {
+          bubbles: true, composed: true, detail: {
+            narrow: this.$.narrow
+          }
+        }));
+        this.$.narrow = !this.$.narrow;
+      }
+
+      polyClicked(e) {
+        var data_args = Polymer.dom(e).rootTarget.getAttribute("id");
+        var args = Polymer.dom(this.root).querySelector("#rightdrawer")
+
+        args.setAttribute("style", "display: block;");
+        args.setAttribute("uid", data_args);
+        
+
+        Polymer.dom(this.root).querySelector("#my-map-main-adl").setAttribute("style", "width: calc(100% - 340px);");
+
+
+        // var _aboutthelot = Polymer.dom(e).rootTarget.getAttribute("aboutthelot");
+        // Polymer.dom(this.root).querySelector("#rightdrawer").setAttribute("aboutthelot2", _aboutthelot);
+
+        // console.log(data_args);
+        // console.log(args);
+      }
+
+      polyMouseOver(e) {
+        Polymer.dom(e).rootTarget.setAttribute("stroke-color", "black");
+      }
+
+      polyMouseOut(e) {
+        Polymer.dom(e).rootTarget.setAttribute("stroke-color", "white");
+      }
+
+      ready() {
+        super.ready();
+        this.addEventListener('closeDrawer', (e) => this._onCloseDrawer(e));
+      }
+
+      _onCloseDrawer(e) {
+        var args = Polymer.dom(this.root).querySelector("#rightdrawer")
+        args.setAttribute("style", "display: none;");
+        args.setAttribute("uid", '');
+
+        this.uid = '';
+
+        Polymer.dom(this.root).querySelector("#my-map-main-adl").setAttribute("style", "width: 100%;");
+      }
+
+
+      _wew() {
+        // console.log(this.blocks);
+      }
+
+      _wew1() {
+        // console.log(this.lots);
+      }     
+      
+      _getcolor() {
+        return 'red';
+      }
+
+
+    }
+
+    window.customElements.define(MyMap.is, MyMap);
+  </script>
+</dom-module>

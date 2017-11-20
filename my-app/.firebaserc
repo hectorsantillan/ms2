@@ -1,0 +1,7 @@
+{
+  "projects": {
+    "default": "hpmg-56df3",
+    "hpmg-staging": "hpmg-staging",
+    "dev": "hpmg-dev"
+  }
+}

@@ -1,0 +1,226 @@
+{
+    "block1": {
+        "index": 0,
+        "name": "Block 1",
+        "map_points": [
+            {
+                "longitude": 123.9983498,
+                "latitude": 10.3004778
+            },
+            {
+                "longitude": 123.9983578,
+                "latitude": 10.3004567
+            },
+            {
+                "longitude": 123.9987776,
+                "latitude": 10.3001426
+            },
+            {
+                "longitude": 123.9988071,
+                "latitude": 10.3001334
+            },
+            {
+                "longitude": 123.9988393,
+                "latitude": 10.3001360
+            },
+            {
+                "longitude": 123.9993167,
+                "latitude": 10.3005702
+            },
+            {
+                "longitude": 123.9993227,
+                "latitude": 10.3005934
+            },
+            {
+                "longitude": 123.9993060,
+                "latitude": 10.3006269
+            },
+            {
+                "longitude": 123.9987856,
+                "latitude": 10.3010135
+            },
+            {
+                "longitude": 123.9987561,
+                "latitude": 10.3010161
+            },
+            {
+                "longitude": 123.9987279,
+                "latitude": 10.3010043
+            },
+            {
+                "longitude": 123.9983565,
+                "latitude": 10.3005042
+            },
+            {
+                "longitude": 123.9983498,
+                "latitude": 10.3004778
+            }
+        ],
+        "lots" : {
+
+        }
+    },
+    "block2": {
+        "index": 1,
+        "name": "Block 2",
+        "map_points": [
+            {
+                "longitude": 123.9987494,
+                "latitude": 10.3000714
+            },
+            {
+                "longitude": 123.9987454,
+                "latitude": 10.3000978
+            },
+            {
+                "longitude": 123.9978777,
+                "latitude": 10.3007285
+            },
+            {
+                "longitude": 123.9978468,
+                "latitude": 10.3007391
+            },
+            {
+                "longitude": 123.997824,
+                "latitude": 10.3007325
+            },
+            {
+                "longitude": 123.9975451,
+                "latitude": 10.3003683
+            },
+            {
+                "longitude": 123.9982653,
+                "latitude": 10.2998273
+            },
+            {
+                "longitude": 123.9984839,
+                "latitude": 10.3000885
+            },
+            {
+                "longitude": 123.9986515,
+                "latitude": 10.2999632
+            },
+            {
+                "longitude": 123.9987373,
+                "latitude": 10.3000424
+            },
+            {
+                "longitude": 123.9987494,
+                "latitude": 10.3000714
+            }
+        ],
+        "lots" : {
+            
+        }
+    },
+    "block3": {
+        "index": 2,
+        "name": "Block 3",
+        "map_points": [
+            {
+                "longitude": 123.9974874,
+                "latitude": 10.3004145
+            },
+            {
+                "longitude": 123.9977556,
+                "latitude": 10.3007773
+            },
+            {
+                "longitude": 123.9977556,
+                "latitude": 10.300809
+            },
+            {
+                "longitude": 123.9977422,
+                "latitude": 10.3008341
+            },
+            {
+                "longitude": 123.9971951,
+                "latitude": 10.3012312
+            },
+            {
+                "longitude": 123.9968544,
+                "latitude": 10.3008948
+            },
+            {
+                "longitude": 123.9967404,
+                "latitude": 10.3006968
+            },
+            {
+                "longitude": 123.9970221,
+                "latitude": 10.3005279
+            },
+            {
+                "longitude": 123.9970328,
+                "latitude": 10.30052
+            },
+            {
+                "longitude": 123.9970489,
+                "latitude": 10.3005583
+            },
+            {
+                "longitude": 123.9974029,
+                "latitude": 10.3003181
+            },
+            {
+                "longitude": 123.9974874,
+                "latitude": 10.3004145
+            }
+        ],
+        "lots" : {
+            "block3-lot1": true,
+            "block3-lot2": true,
+            "block3-lot3": true,
+            "block3-lot4": true,
+            "block3-lot5": true
+        }
+    },
+    "block4": {
+        "index": 3,
+        "name": "Block 4",
+        "map_points": [
+            {
+                "longitude": 123.9993744,
+                "latitude": 10.3006374
+            },
+            {
+                "longitude": 123.9994106,
+                "latitude": 10.3006493
+            },
+            {
+                "longitude": 123.999766,
+                "latitude": 10.3009541
+            },
+            {
+                "longitude": 123.9997874,
+                "latitude": 10.3009594
+            },
+            {
+                "longitude": 123.9998075,
+                "latitude": 10.3009568
+            },
+            {
+                "longitude": 123.9998625,
+                "latitude": 10.3010201
+            },
+            {
+                "longitude": 123.9991625,
+                "latitude": 10.3010504
+            },
+            {
+                "longitude": 123.9990431,
+                "latitude": 10.3008974
+            },
+            {
+                "longitude": 123.9993516,
+                "latitude": 10.300644
+            },
+            {
+                "longitude": 123.9993744,
+                "latitude": 10.3006374
+            }
+        ],
+        "lots" : {
+            
+        }
+    }
+}

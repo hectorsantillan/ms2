@@ -1,0 +1,20 @@
+{
+    "block3lot1": {
+        "refcode": "0001",
+        "status": "active",
+        "type": "On-Hold",
+        "customer": "Juan Dela Cruz III",
+        "agent": "Mr. Marc Rizon",
+        "datareserved": "12/31/2017",
+        "expirationdate": "01/31/2018"
+    },
+    "block3lot2": {
+        "refcode": "0002",
+        "status": "active",
+        "type": "Reserved",
+        "customer": "Juana Dela Cruz II",
+        "agent": "Mr. Marc Rizon",
+        "datareserved": "12/31/2017",
+        "expirationdate": "01/31/2018"
+    }
+}

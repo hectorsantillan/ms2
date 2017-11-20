@@ -1,0 +1,266 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="shared-styles.html">
+<link rel="import" href="my-icons.html">
+<link rel="import" href="../bower_components/polymerfire/firebase-document.html">
+<link rel="import" href="../bower_components/polymerfire/firebase-app.html">
+<link rel="import" href="../bower_components/paper-toast/paper-toast.html">
+
+<dom-module id="my-rightdrawer">
+    <template>
+        <style include="shared-styles">
+            :host {
+                display: block;
+                right: 0;
+                left: auto;
+                -webkit-transform: translate3d(100%, 0, 0);
+                transform: translate3d(100%, 0, 0);
+
+                position: absolute;
+                /* float: left; */
+                /* padding: 10px; */
+            }
+
+            paper-icon-button.menu {
+                margin-right: 16px;
+            }
+
+            .main-container {
+                width: 340px;
+                padding-bottom: 64px;
+            }
+
+            app-header {
+                color: rgb(255, 255, 255);
+                background-color: #9C27B0;
+            }
+
+            .lot-details {
+                /* color: black; */
+                padding: 24px;
+                padding-top: 88px;
+            }
+
+            .lot-details2 {
+                /* color: black; */
+                padding: 24px;
+            }
+        </style>
+
+        <firebase-document path="/lots/[[uid]]" data="{{lotdetails}}">
+        </firebase-document>
+
+
+        <firebase-document id='reservD' path="/reservations/[[uid]]" data="{{reservationdetails}}">
+        </firebase-document>
+
+
+        <!-- <app-drawer align="right" slot="drawer"> -->
+        <div class="main-container">
+            <app-header-layout has-scrolling-region>
+                <app-header fixed slot="header">
+                    <app-toolbar>
+                        <paper-icon-button class="menu" icon="my-icons:close" on-tap="closeDrawer"></paper-icon-button>
+                        <div main-title>[[lotdetails.name]]</div>
+                        <paper-icon-button icon="my-icons:more-vert" on-tap="toggleDrawer"></paper-icon-button>
+                    </app-toolbar>
+
+                </app-header>
+            </app-header-layout>
+
+
+
+            <template is="dom-if" if="{{isReserved(reservationdetails.type)}}">
+                <div class="lot-details">
+                    Status:
+                    <font color="red">[[reservationdetails.type]]</font>
+                    </br>
+                    Lot Area: [[lotdetails.area]]
+                </div>
+                <div class="card">
+                    Reservation Ref.: [[reservationdetails.refcode]]</br>
+                    Customer: [[reservationdetails.customer]]</br>
+                    Agent: [[reservationdetails.agent]]</br>
+                    Reserved: [[reservationdetails.datereserved]]</br>
+                    Expiry: [[reservationdetails.expirationdate]]
+                </div>
+                <div class="lot-details2">
+                    <a href="">Cancel Reservation</a>
+                    </br>
+                    <a href="">Proceed to Booking</a>
+                </div>
+
+            </template>
+
+            <template is="dom-if" if="{{isOnHold(reservationdetails.type)}}">
+                <div class="lot-details">
+                    Status:
+                    <font color="gray">[[reservationdetails.type]]</font>
+                    </br>
+                    Lot Area: [[lotdetails.area]]
+                </div>
+                <div class="card">
+                    On-Hold Ref.: [[reservationdetails.refcode]]</br>
+                    Customer: [[reservationdetails.customer]]</br>
+                    Agent: [[reservationdetails.agent]]</br>
+                    Reserved: [[reservationdetails.datereserved]]</br>
+                    Expiry: [[reservationdetails.expirationdate]]
+                </div>
+                <div class="lot-details2">
+                    <a href="">Proceed to Reservation</a>
+                </div>
+
+            </template>
+
+            <template is="dom-if" if="{{isAvailable(reservationdetails.type)}}">
+                <div class="lot-details">
+                    Status:
+                    <font color="green">[[reservationdetails.type]]</font>
+                    </br>
+                    Lot Area: [[lotdetails.area]]
+                </div>
+                <div class="lot-details2">
+                    <a href="/application">Request to Hold</a>
+                    </br>
+                    <a href="">Process Reservation</a>
+                </div>
+
+            </template>
+
+        </div>
+
+
+
+
+    </template>
+
+    <script>
+        Polymer({
+            is: 'my-rightdrawer',
+
+            properties: {
+                uid: String,
+                lotdetails: {
+                    type: Object,
+                    observer: '_ldChanged'
+                },
+                reservationdetails: {
+                    type: Object,
+                    observer: '_rdChanged'
+                },
+                fromRD: Boolean,
+                fromLD: Boolean
+            },
+            observers: [
+                '_lotdetailsChanged(lotdetails.*)',
+                '_reservationdetailsChanged(reservationdetails.*)'
+            ],
+
+            closeDrawer(e) {
+                this.dispatchEvent(new CustomEvent('closeDrawer', {
+                    bubbles: true, composed: true, detail: {}
+                }));
+            },
+            isReserved(lotstatus) {
+                // if (lotstatus === 'Reserved') {
+                //     this.isUserClicked = false;
+                // }
+                return lotstatus === 'Reserved';
+            },
+            isOnHold(lotstatus) {
+                // if (lotstatus === 'On-Hold') {
+                //     this.isUserClicked = false;
+                // }
+                return lotstatus === 'On-Hold';
+            },
+            isAvailable(lotstatus) {
+                // if (lotstatus === 'Available') {
+                //     return true;
+                // }
+                // else if (lotstatus == null) {
+                //     this.reservationdetails.type = 'Available';
+                //     return true;
+                // }
+                // else {
+
+                // if (lotstatus === 'Available') {
+                //     this.isUserClicked = false;
+                // }
+
+                return lotstatus === 'Available';
+                // }
+            },
+
+            _lotdetailsChanged(e) {
+
+                if (this.fromLD !== true) {
+                    if (typeof e !== 'undefined' && e !== null) {
+                        if (e !== '') {
+                            this.dispatchEvent(new CustomEvent('toast', {
+                                bubbles: true, composed: true, detail: {
+                                    text: e.name + ': reservation details changed.'
+                                }
+                            }));
+                            // console.log(s + ' ' + this.isUserClicked);
+                        }
+                    }
+                }
+
+
+                this.fromLD = false;
+            },
+
+            _reservationdetailsChanged(e) {
+
+                if (this.fromRD !== true) {
+                    if (typeof e !== 'undefined' && e !== null) {
+                        if (e !== '') {
+                            this.dispatchEvent(new CustomEvent('toast', {
+                                bubbles: true, composed: true, detail: {
+                                    text: this.lotdetails.name + ': lot details changed.'
+                                }
+                            }));
+                        }
+                    }
+                }
+
+                // console.log('_res');
+                // console.log(this.fromRD);                
+                // console.log(e);
+
+               
+                this.fromRD = false;
+
+
+            },
+            _rdChanged(newData, oldData) {
+                this.fromRD = true;
+
+                // this.isUserClicked = true;
+                // console.log('_rd');
+                // console.log(oldData);
+                // console.log(newData);
+            },
+            _ldChanged(newData, oldData) {
+                this.fromLD = true;
+
+                // this.isUserClicked = true;
+                // console.log('_rd');
+                // console.log(oldData);
+                // console.log(newData);
+            } 
+        })
+
+
+    </script>
+</dom-module>

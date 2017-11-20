@@ -1,0 +1,264 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/google-map/google-map.html">
+<link rel="import" href="../bower_components/google-map/google-map-poly.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="shared-styles.html">
+<link rel="import" href="my-icons.html">
+
+<link rel="import" href="/src/my-rightdrawer.html">
+
+<dom-module id="my-map-original">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        /* padding: 10px; */
+      }
+
+      /* app-drawer-layout:not([narrow]) [drawer-toggle] {
+        display: none;
+      } */
+
+      app-header {
+        color: rgb(255, 255, 255);
+        background-color: #388E3C;
+      }
+
+      paper-icon-button.menu {
+        margin-right: 16px;
+      }
+
+      app-header-layout{
+       float: right;
+      }
+
+    </style>
+
+
+    <app-drawer-layout fullbleed style="width: 100%;" Id="my-map-main-adl">
+      <app-header-layout fullbleed has-scrolling-region>
+        <app-header fixed slot="header">
+          <app-toolbar primary>
+            <paper-icon-button class="menu" icon="my-icons:menu" on-tap="toggleDrawer"></paper-icon-button>
+            <div main-title>Map</div>
+          </app-toolbar>
+        </app-header>
+
+
+        <google-map latitude="10.3006632" longitude="123.99903661" zoom="18" api-key="AIzaSyDqRHpHpcmEZQNfcTshfmTPy29xDnU1RFU" no-auto-tilt="true"
+          fit-to-markers>
+
+          <google-map-poly closed stroke-weight="0" fill-color="#cbe6a3" fill-opacity="1">
+            <google-map-point longitude="123.9983498" latitude="10.3004778"></google-map-point>
+            <google-map-point longitude="123.9983578" latitude="10.3004567"></google-map-point>
+            <google-map-point longitude="123.9987776" latitude="10.3001426"></google-map-point>
+            <google-map-point longitude="123.9988071" latitude="10.3001334"></google-map-point>
+            <google-map-point longitude="123.9988393" latitude="10.3001360"></google-map-point>
+            <google-map-point longitude="123.9993167" latitude="10.3005702"></google-map-point>
+            <google-map-point longitude="123.9993227" latitude="10.3005934"></google-map-point>
+            <google-map-point longitude="123.9993060" latitude="10.3006269"></google-map-point>
+            <google-map-point longitude="123.9987856" latitude="10.3010135"></google-map-point>
+            <google-map-point longitude="123.9987561" latitude="10.3010161"></google-map-point>
+            <google-map-point longitude="123.9987279" latitude="10.3010043"></google-map-point>
+            <google-map-point longitude="123.9983565" latitude="10.3005042"></google-map-point>
+            <google-map-point longitude="123.9983498" latitude="10.3004778"></google-map-point>
+          </google-map-poly>
+
+          <google-map-poly closed stroke-weight="0" fill-color="#cbe6a3" fill-opacity="1">
+            <google-map-point longitude="123.9987494" latitude="10.3000714"></google-map-point>
+            <google-map-point longitude="123.9987454" latitude="10.3000978"></google-map-point>
+            <google-map-point longitude="123.9978777" latitude="10.3007285"></google-map-point>
+            <google-map-point longitude="123.9978468" latitude="10.3007391"></google-map-point>
+            <google-map-point longitude="123.997824" latitude="10.3007325"></google-map-point>
+            <google-map-point longitude="123.9975451" latitude="10.3003683"></google-map-point>
+            <google-map-point longitude="123.9982653" latitude="10.2998273"></google-map-point>
+            <google-map-point longitude="123.9984839" latitude="10.3000885"></google-map-point>
+            <google-map-point longitude="123.9986515" latitude="10.2999632"></google-map-point>
+            <google-map-point longitude="123.9987373" latitude="10.3000424"></google-map-point>
+            <google-map-point longitude="123.9987494" latitude="10.3000714"></google-map-point>
+          </google-map-poly>
+
+          <google-map-poly closed stroke-weight="0" fill-color="#cbe6a3" fill-opacity="1">
+            <google-map-point longitude="123.9974874" latitude="10.3004145"></google-map-point>
+            <google-map-point longitude="123.9977556" latitude="10.3007773"></google-map-point>
+            <google-map-point longitude="123.9977556" latitude="10.300809"></google-map-point>
+            <google-map-point longitude="123.9977422" latitude="10.3008341"></google-map-point>
+            <google-map-point longitude="123.9971951" latitude="10.3012312"></google-map-point>
+            <google-map-point longitude="123.9968544" latitude="10.3008948"></google-map-point>
+            <google-map-point longitude="123.9967404" latitude="10.3006968"></google-map-point>
+            <google-map-point longitude="123.9970221" latitude="10.3005279"></google-map-point>
+            <google-map-point longitude="123.9970328" latitude="10.30052"></google-map-point>
+            <google-map-point longitude="123.9970489" latitude="10.3005583"></google-map-point>
+            <google-map-point longitude="123.9974029" latitude="10.3003181"></google-map-point>
+            <google-map-point longitude="123.9974874" latitude="10.3004145"></google-map-point>
+          </google-map-poly>
+
+          <google-map-poly closed stroke-weight="0" fill-color="#cbe6a3" fill-opacity="1">
+            <google-map-point longitude="123.9993744" latitude="10.3006374"></google-map-point>
+            <google-map-point longitude="123.9994106" latitude="10.3006493"></google-map-point>
+            <google-map-point longitude="123.999766" latitude="10.3009541"></google-map-point>
+            <google-map-point longitude="123.9997874" latitude="10.3009594"></google-map-point>
+            <google-map-point longitude="123.9998075" latitude="10.3009568"></google-map-point>
+            <google-map-point longitude="123.9998625" latitude="10.3010201"></google-map-point>
+            <google-map-point longitude="123.9991625" latitude="10.3010504"></google-map-point>
+            <google-map-point longitude="123.9990431" latitude="10.3008974"></google-map-point>
+            <google-map-point longitude="123.9993516" latitude="10.300644"></google-map-point>
+            <google-map-point longitude="123.9993744" latitude="10.3006374"></google-map-point>
+          </google-map-poly>
+
+          <google-map-poly closed stroke-color="white" stroke-position="inside" stroke-opacity="1" stroke-weight="1" fill-color="red"
+            fill-opacity="1" clickable="true" click-events="true" on-google-map-poly-click="polyClicked" mouse-events="true"
+            on-google-map-poly-mouseover="polyMouseOver" on-google-map-poly-mouseout="polyMouseOut" data-args="Block 3 - Lawn Lot 1" aboutthelot='{"lotstatus":"Reserved","lotarea":"9m²","reservation":{"refcode":"00001","customer":"Juan Dela Cruz","agent":"Mr. Marc Rizon","datereserved":"Nov. 10, 2017 (3 days ago)","expiry":"Dec. 10, 2017 (27 days later)"}}'>
+            <google-map-point longitude="123.999308" latitude="10.3005992"></google-map-point>
+            <google-map-point longitude="123.9993026" latitude="10.3005926"></google-map-point>
+            <google-map-point longitude="123.999314" latitude="10.300582"></google-map-point>
+            <google-map-point longitude="123.99932" latitude="10.3005886"></google-map-point>
+            <google-map-point longitude="123.999308" latitude="10.3005992"></google-map-point>
+          </google-map-poly>
+
+          <google-map-poly closed stroke-color="white" stroke-position="inside" stroke-opacity="1" stroke-weight="1" fill-color="gray"
+            fill-opacity="1" clickable="true" click-events="true" on-google-map-poly-click="polyClicked" mouse-events="true"
+            on-google-map-poly-mouseover="polyMouseOver" on-google-map-poly-mouseout="polyMouseOut" data-args="Block 3 - Lawn Lot 2" aboutthelot='{"lotstatus":"On-Hold","lotarea":"9m²","reservation":{"refcode":"H00001","customer":"Juana Dela Cruz","agent":"Mr. Marc Rizon","datereserved":"Nov. 13, 2017 (Just Now)","expiry":"Nov. 14, 2017 (Tomorrow)"}}'>
+            <google-map-point longitude="123.9993026" latitude="10.3005926"></google-map-point>
+            <google-map-point longitude="123.9992969" latitude="10.3005853"></google-map-point>
+            <google-map-point longitude="123.999308" latitude="10.3005754"></google-map-point>
+            <google-map-point longitude="123.999314" latitude="10.300582"></google-map-point>
+            <google-map-point longitude="123.9993026" latitude="10.3005926"></google-map-point>
+          </google-map-poly>
+
+          <google-map-poly closed stroke-color="white" stroke-position="inside" stroke-opacity="1" stroke-weight="1" fill-color="green"
+            fill-opacity="1" clickable="true" click-events="true" on-google-map-poly-click="polyClicked" mouse-events="true"
+            on-google-map-poly-mouseover="polyMouseOver" on-google-map-poly-mouseout="polyMouseOut" data-args="Block 3 - Lawn Lot 3" aboutthelot='{"lotstatus":"Available","lotarea":"9m²","reservation":{}}'>
+            <google-map-point longitude="123.999308" latitude="10.3005754"></google-map-point>
+            <google-map-point longitude="123.9992969" latitude="10.3005853"></google-map-point>
+            <google-map-point longitude="123.9992905" latitude="10.3005781"></google-map-point>
+            <google-map-point longitude="123.9993019" latitude="10.3005682"></google-map-point>
+            <google-map-point longitude="123.999308" latitude="10.3005754"></google-map-point>
+          </google-map-poly>
+
+          <google-map-poly closed stroke-color="white" stroke-position="inside" stroke-opacity="1" stroke-weight="1" fill-color="green"
+            fill-opacity="1" clickable="true" click-events="true" on-google-map-poly-click="polyClicked" mouse-events="true"
+            on-google-map-poly-mouseover="polyMouseOver" on-google-map-poly-mouseout="polyMouseOut" data-args="Block 3 - Lawn Lot 4" aboutthelot='{"lotstatus":"Available","lotarea":"9m²","reservation":{}}'>
+            <google-map-point longitude="123.9992905" latitude="10.3005781"></google-map-point>
+            <google-map-point longitude="123.9992845" latitude="10.3005718"></google-map-point>
+            <google-map-point longitude="123.9992956" latitude="10.3005619"></google-map-point>
+            <google-map-point longitude="123.9993019" latitude="10.3005682"></google-map-point>
+            <google-map-point longitude="123.9992905" latitude="10.3005781"></google-map-point>
+          </google-map-poly>
+
+          <google-map-poly closed stroke-color="white" stroke-position="inside" stroke-opacity="1" stroke-weight="1" fill-color="green"
+            fill-opacity="1" clickable="true" click-events="true" on-google-map-poly-click="polyClicked" mouse-events="true"
+            on-google-map-poly-mouseover="polyMouseOver" on-google-map-poly-mouseout="polyMouseOut" data-args="Block 3 - Lawn Lot 5" aboutthelot='{"lotstatus":"Available","lotarea":"9m²","reservation":{}}'>
+            <google-map-point longitude="123.9992845" latitude="10.3005718"></google-map-point>
+            <google-map-point longitude="123.9992785" latitude="10.3005642"></google-map-point>
+            <google-map-point longitude="123.9992892" latitude="10.3005543"></google-map-point>
+            <google-map-point longitude="123.9992956" latitude="10.3005619"></google-map-point>
+            <google-map-point longitude="123.9992845" latitude="10.3005718"></google-map-point>
+          </google-map-poly>
+
+        </google-map>
+
+      </app-header-layout>
+
+      <!-- <app-drawer align="end" slot="drawer" opened persistent="true">
+          <app-toolbar>App name</app-toolbar>
+
+                         
+        </app-drawer> -->
+        
+
+      
+      <!-- <div>asdsad</div> -->
+
+
+      <!-- <my-rightdrawer blocklot="Block 1 - Lot 1"></my-rightdrawer>     -->
+
+      <my-rightdrawer id="rightdrawer" blocklot="" style="display: none;"></my-rightdrawer>   
+      
+
+    </app-drawer-layout>
+
+    
+    
+
+
+  </template>
+
+  <script>
+    class MyMapOriginal extends Polymer.Element {
+      static get is() { return 'my-map-original'; }
+
+      static get properties() {
+        return {
+          narrow: {
+            type: Boolean,
+            notify: true
+          }
+
+        };
+      }
+
+      toggleDrawer() {
+        this.dispatchEvent(new CustomEvent('toggleDrawer', {
+          bubbles: true, composed: true, detail: {
+            narrow: this.$.narrow
+          }
+        }));
+        this.$.narrow = !this.$.narrow;
+      }
+
+      polyClicked(e) {
+        var data_args = Polymer.dom(e).rootTarget.getAttribute("data-args");
+        var args = Polymer.dom(this.root).querySelector("#rightdrawer")
+
+        args.setAttribute("style","display: block;");
+        args.setAttribute("blocklot",data_args);
+
+        Polymer.dom(this.root).querySelector("#my-map-main-adl").setAttribute("style","width: calc(100% - 340px);");
+
+
+        var _aboutthelot = Polymer.dom(e).rootTarget.getAttribute("aboutthelot");
+        Polymer.dom(this.root).querySelector("#rightdrawer").setAttribute("aboutthelot2",_aboutthelot);
+       
+        // console.log(data_args);
+        // console.log(args);
+      }
+
+      polyMouseOver(e) {
+        Polymer.dom(e).rootTarget.setAttribute("stroke-color", "black");
+      }
+
+      polyMouseOut(e) {
+        Polymer.dom(e).rootTarget.setAttribute("stroke-color", "white");
+      }
+
+      ready() {
+        super.ready();
+        this.addEventListener('closeDrawer', (e) => this._onCloseDrawer(e));
+        // this.addEventListener('on-tap', (e) => this._onChangeSection(e));
+      }
+
+      _onCloseDrawer(e) {
+        var args = Polymer.dom(this.root).querySelector("#rightdrawer")
+        args.setAttribute("style","display: none;");
+        args.setAttribute("blocklot",'');
+
+        Polymer.dom(this.root).querySelector("#my-map-main-adl").setAttribute("style","width: 100%;");
+      }      
+
+    }
+
+    window.customElements.define(MyMapOriginal.is, MyMapOriginal);
+  </script>
+</dom-module>
