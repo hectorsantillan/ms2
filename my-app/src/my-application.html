@@ -1,5 +1,14 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../bower_components/paper-item/paper-icon-item.html">
+<link rel="import" href="../bower_components/neon-animation/neon-animated-pages.html">
+<link rel="import" href="../bower_components/neon-animation/neon-animatable.html">
+<link rel="import" href="../bower_components/neon-animation/neon-animations.html">
+<link rel="import" href="../bower_components/neon-animation/neon-animation-behavior.html">
+<link rel="import" href="../bower_components/neon-animation/web-animations.html">
+<link rel="import" href="../bower_components/paper-fab/paper-fab.html">
+
 <link rel="import" href="shared-styles.html">
 <link rel="import" href="my-icons.html">
 
@@ -10,16 +19,159 @@
                 display: block;
             }
 
+            app-header {
+                color: rgb(255, 255, 255);
+                background-color: #388E3C;
+            }
+
+            app-header paper-icon-button {
+                --paper-icon-button-ink-color: #000000;
+            }
+
+            app-drawer-layout:not([narrow]) [drawer-toggle] {
+                display: none;
+            }
+
+            app-drawer {
+                --app-drawer-content-container: {
+                    background-color: #F4F5F6;
+                }
+            }
+
+            paper-icon-button.menu {
+                margin-right: 16px;
+            }
+
+            paper-item {
+                height: 64px;
+            }
+
+            .mnu {
+                padding: 16px;
+            }
+
+            paper-fab {
+                background: #1976d2;
+            }
+
+
+
+
+            @media (min-width: 800px) {
+                .footer {
+                    position: absolute;
+                    bottom: 16px;
+                    width: 100%;
+                }
+                .paper-fab-0 {
+                    position: absolute;
+                    left: 48px;
+                    bottom: 48px;
+                }
+
+                .paper-fab-1 {
+                    position: absolute;
+                    right: 48px;
+                    bottom: 48px;
+                }
+
+            }
+
+            @media (max-width: 800px) {
+                .paper-fab-0 {
+                    position: absolute;
+                    left: 16px;
+                    bottom: 48px;
+                }
+
+                .paper-fab-1 {
+                    position: absolute;
+                    right: 16px;
+                    bottom: 48px;
+                }
+
+                .docu {
+                    margin-left: 16px;
+                    margin-right: 16px;
+                }
+
+            }
         </style>
 
+        <app-drawer-layout fullbleed narrow="{{narrow}}" id="drawerLayout">
+            <app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]" align="right">
+                <div class="mnu">
+                    <!-- <iron-selector attr-for-selected="value" class="drawer-list"> -->
+                    <paper-item id="lotdetails" on-click="_selectPage" data-args="0">
+                        <div class="circle-mini-first" on-click="_selectPage" data-args="0">1</div>
+                        <span on-click="_selectPage" data-args="0">Lot Details</span>
+                    </paper-item>
 
-        <div class="main-container">
-               Application Soon.</br>
-               <a href="[[rootPath]]">Head back to home.</a>
-               [[blocklot]]
+                    <paper-item id="buyersinformation" on-click="_selectPage" data-args="1">
+                        <div class="circle-mini" on-click="_selectPage" data-args="1">2</div>
+                        <span on-click="_selectPage" data-args="1">Buyer's Information</span>
+                    </paper-item>
+
+                    <paper-item id="samplecomputation" on-click="_selectPage" data-args="2">
+                        <div class="circle-mini" on-click="_selectPage" data-args="2">3</div>
+                        <span on-click="_selectPage" data-args="2">Sample Computation</span>
+                    </paper-item>
+
+                    <paper-item id="complete" on-click="_selectPage" data-args="3">
+                        <div class="circle-mini-last" on-click="_selectPage" data-args="3">4</div>
+                        <span on-click="_selectPage" data-args="3">Complete</span>
+                    </paper-item>
+
+                    <!-- </iron-selector> -->
+                </div>
+            </app-drawer>
+
+            <app-header-layout has-scrolling-region>
+                <app-header fixed slot="header">
+                    <app-toolbar>
+                        <paper-icon-button class="menu" icon="my-icons:menu" on-tap="toggleDrawer"></paper-icon-button>
+                        <div main-title>On-Hold Application</div>
+                        <paper-icon-button drawer-toggle icon="my-icons:menu"></paper-icon-button>
+                        <!-- <paper-icon-button icon="my-icons:more-vert" on-tap="toggleDrawer"></paper-icon-button> -->
+                    </app-toolbar>
+
+                </app-header>
 
 
-        </div>
+
+                <neon-animated-pages selected="{{selectedPage}}" entry-animation="{{entryanimation}}" exit-animation="{{exitanimation}}">
+                    <neon-animatable>
+                        <div class="docu">1</div>
+                    </neon-animatable>
+                    <neon-animatable>
+                        <div class="docu">2</div>
+                    </neon-animatable>
+                    <neon-animatable>
+                        <div class="docu">3</div>
+                    </neon-animatable>
+                    <neon-animatable>
+                        <div class="docu">4</div>
+                    </neon-animatable>
+                </neon-animated-pages>
+
+                <!-- <template is="dom-if" if="{{_currentPage('lotdetails',selectedPage)}}">
+                        <div>Lot Details</div>
+                    </template> -->
+
+
+            </app-header-layout>
+
+            <div class="footer">
+                <paper-fab class="paper-fab-0" icon="my-icons:chevron-left" on-tap="_select1"></paper-fab>
+                <paper-fab class="paper-fab-1" icon="my-icons:chevron-right" on-tap="_select2"></paper-fab>
+            </div>
+
+        </app-drawer-layout>
+
+
+
+
+
 
     </template>
 
@@ -30,7 +182,74 @@
             properties: {
                 blocklot: String,
                 details: Object,
+                narrow: {
+                    type: Boolean,
+                    notify: true
+                },
+                selectedPage: Number,
+                entryanimation: String,
+                exitanimation: String,
+
             },
+
+            toggleDrawer() {
+                this.dispatchEvent(new CustomEvent('toggleDrawer', {
+                    bubbles: true, composed: true, detail: {
+                        narrow: this.$.narrow
+                    }
+                }));
+                this.$.narrow = !this.$.narrow;
+            },
+
+            _currentPage(e, s) {
+                return s === e;
+            },
+
+            _selectPage(e) {
+                var currentselectedpage = parseInt(this.selectedPage);
+
+                var data_args = Polymer.dom(e).rootTarget.getAttribute("data-args");
+
+                this.selectedPage =  parseInt(data_args);
+
+                if (currentselectedpage > this.selectedPage) {
+                    this.entryanimation = "slide-from-right-animation";
+                    this.exitanimation = "slide-left-animation";
+                }
+                else {
+                    this.entryanimation = "slide-from-left-animation";
+                    this.exitanimation = "slide-right-animation";
+
+                }
+
+                console.log(e);
+
+                // console.log(currentselectedpage);
+                // console.log(this.selectedPage);
+
+                // if (e.detail !== null && e.detail!== 'undefined') {
+                //     this.selectedPage = e.detail.item.attributes.id.value;
+                // }
+
+
+            },
+            ready() {
+                // this.addEventListener('iron-select', (e) => this._selectPage(e));
+                this.selectedPage = 0;
+            },
+
+            _select1(e) {
+                this.entryanimation = "slide-from-left-animation";
+                this.exitanimation = "slide-right-animation";
+                this.selectedPage = "0";
+            },
+
+            _select2(e) {
+                this.entryanimation = "slide-from-right-animation";
+                this.exitanimation = "slide-left-animation";
+                this.selectedPage = "1";
+            }
+
 
 
 

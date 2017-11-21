@@ -132,14 +132,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             notify: true
           },
           blocks: {
-            type: Object,
-            observer: "_wew"
+            type: Object
           },
           lots: {
-            type: Object,
-            observer: "_wew1"
-          },
-          oldUID: String
+            type: Object
+          }
         };
 
       }
@@ -194,18 +191,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         Polymer.dom(this.root).querySelector("#my-map-main-adl").setAttribute("style", "width: 100%;");
       }
 
-
-      _wew() {
-        // console.log(this.blocks);
-      }
-
-      _wew1() {
-        // console.log(this.lots);
-      }     
-      
-      _getcolor() {
-        return 'red';
-      }
 
 
     }
