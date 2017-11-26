@@ -26,12 +26,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
 <link rel="import" href="../bower_components/paper-fab/paper-fab.html">
 <link rel="import" href="../bower_components/paper-toast/paper-toast.html">
+<link rel="import" href="../bower_components/polymerfire/firebase-app.html">
 <link rel="import" href="my-icons.html">
 <link rel="import" href="shared-styles.html">
 
 <link rel="lazy-import" href="my-dashboard.html">
 <link rel="lazy-import" href="my-map.html">
 <link rel="lazy-import" href="my-application.html">
+<link rel="lazy-import" href="my-reserve.html">
+<link rel="lazy-import" href="my-cancel.html">
 <link rel="lazy-import" href="my-galleries.html">
 <link rel="lazy-import" href="my-view404.html">
 
@@ -156,6 +159,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}">
     </app-route>
 
+    <firebase-app auth-domain="hpmg-dev.firebaseapp.com" database-url="https://hpmg-dev.firebaseio.com/" api-key="AIzaSyBtlwFGg8lY9Xygh3SilZDGefEVBNS2Ao4">
+    </firebase-app>
+
+    <!-- <firebase-app auth-domain="hpmg-56df3.firebaseapp.com" database-url="https://hpmg-56df3.firebaseio.com/" api-key="AIzaSyCKxkkMfRQlhG5vTWh8Y_1yNWtMCTa-YPM">
+    </firebase-app>     -->
+
     <app-drawer-layout fullbleed narrow="{{narrow}}" id="drawerLayout">
       <app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]">
         <div style="height: 100%; overflow: auto;">
@@ -220,7 +229,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <my-galleries name="galleries"></my-galleries>
         <my-map name="map"></my-map>
         <!-- <my-map name="applications"></my-map> -->
-        <my-application name="application" blocklot="[[blocklot]]" details="[[applicationdetails]]"></my-application>
+        <my-application name="application" route="[[subroute]]"></my-application>
+        <my-reserve name="reserve" route="[[subroute]]"></my-reserve>
+        <my-cancel name="cancel" route="[[subroute]]"></my-cancel>
         <my-view404 name="view404"></my-view404>
       </iron-pages>
 
@@ -314,19 +325,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       _onChangeSection(e) {
-          if (this.$.drawerLayout.forceNarrow || !this.$.drawerLayout.narrow) {
-            this.$.drawerLayout.forceNarrow = !this.$.drawerLayout.forceNarrow;
-          } else {
-            this.$.drawerLayout.drawer.toggle();
-          }
+        if (this.$.drawerLayout.forceNarrow || !this.$.drawerLayout.narrow) {
+          this.$.drawerLayout.forceNarrow = !this.$.drawerLayout.forceNarrow;
+        } else {
+          this.$.drawerLayout.drawer.toggle();
+        }
       }
 
       _onChangeSection2(e) {
         this.$.drawerLayout.forceNarrow = e.detail.narrow;
-      }     
-      
+      }
+
       _onToast(e) {
-        this.$.toast.show({text: e.detail.text});
+        this.$.toast.show({ text: e.detail.text });
         // console.log(e);
       }
 

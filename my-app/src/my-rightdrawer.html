@@ -13,8 +13,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="shared-styles.html">
 <link rel="import" href="my-icons.html">
 <link rel="import" href="../bower_components/polymerfire/firebase-document.html">
-<link rel="import" href="../bower_components/polymerfire/firebase-app.html">
 <link rel="import" href="../bower_components/paper-toast/paper-toast.html">
+<!-- <link rel="import" href="../bower_components/polymerfire/firebase-app.html"> -->
 
 <dom-module id="my-rightdrawer">
     <template>
@@ -91,11 +91,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     Reservation Ref.: [[reservationdetails.refcode]]</br>
                     Customer: [[reservationdetails.customer]]</br>
                     Agent: [[reservationdetails.agent]]</br>
-                    Reserved: [[reservationdetails.datereserved]]</br>
+                    Reserved: [[reservationdetails.datareserved]]</br>
                     Expiry: [[reservationdetails.expirationdate]]
                 </div>
                 <div class="lot-details2">
-                    <a href="">Cancel Reservation</a>
+                    <a href="/cancel/[[uid]]">Cancel Reservation</a>
                     </br>
                     <a href="">Proceed to Booking</a>
                 </div>
@@ -113,11 +113,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     On-Hold Ref.: [[reservationdetails.refcode]]</br>
                     Customer: [[reservationdetails.customer]]</br>
                     Agent: [[reservationdetails.agent]]</br>
-                    Reserved: [[reservationdetails.datereserved]]</br>
+                    Reserved: [[reservationdetails.datareserved]]</br>
                     Expiry: [[reservationdetails.expirationdate]]
                 </div>
                 <div class="lot-details2">
-                    <a href="">Proceed to Reservation</a>
+                    <a href="/cancel/[[uid]]">Cancel Hold</a></br>
+                    <a href="/reserve/[[uid]]">Proceed to Reservation</a>
                 </div>
 
             </template>
@@ -130,9 +131,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     Lot Area: [[lotdetails.area]]
                 </div>
                 <div class="lot-details2">
-                    <a href="/application">Request to Hold</a>
+                    <a href="/application/hold/[[uid]]">Request to Hold</a>
                     </br>
-                    <a href="">Process Reservation</a>
+                    <a href="/reserve/[[uid]]">Process Reservation</a>
                 </div>
 
             </template>
@@ -238,7 +239,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 // console.log(this.fromRD);                
                 // console.log(e);
 
-               
+
                 this.fromRD = false;
 
 
@@ -258,7 +259,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 // console.log('_rd');
                 // console.log(oldData);
                 // console.log(newData);
-            } 
+            }
         })
 
 

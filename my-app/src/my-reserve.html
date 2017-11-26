@@ -21,7 +21,7 @@
 <link rel="import" href="shared-styles.html">
 <link rel="import" href="my-icons.html">
 
-<dom-module id="my-application">
+<dom-module id="my-reserve">
     <template>
         <style include="shared-styles">
             :host {
@@ -117,7 +117,7 @@
             }
         </style>
 
-        <app-route route="[[route]]" pattern="/hold/:lot" data="{{routeData}}"></app-route>
+        <app-route route="[[route]]" pattern="/:lot" data="{{routeData}}"></app-route>
 
         <firebase-document id="lotdoc" path="/lots/[[routeData.lot]]" data="{{lotdetailsAPP}}">
         </firebase-document>
@@ -162,7 +162,7 @@
                 <app-header fixed slot="header">
                     <app-toolbar>
                         <paper-icon-button class="menu" icon="my-icons:menu" on-tap="toggleDrawer"></paper-icon-button>
-                        <div main-title>On-Hold Application</div>
+                        <div main-title>Reserve Application</div>
                         <paper-icon-button drawer-toggle icon="my-icons:menu"></paper-icon-button>
                         <!-- <paper-icon-button icon="my-icons:more-vert" on-tap="toggleDrawer"></paper-icon-button> -->
                     </app-toolbar>
@@ -273,7 +273,7 @@
 
     <script>
         Polymer({
-            is: 'my-application',
+            is: 'my-reserve',
 
             properties: {
                 blocklot: String,
@@ -406,13 +406,13 @@
                         var mm2 = today.getMonth() + 1 + 1; //January is 0!
                         expirationdate = mm2 + '/' + dd + '/' + yyyy;
 
-                        this.set('lotdetailsAPP.color', 'gray');
+                        this.set('lotdetailsAPP.color', 'red');
                         this.set('reservationdetailsAPP.agent', 'Mr. Marc Rizon');
                         this.set('reservationdetailsAPP.datareserved', currentdate);
                         this.set('reservationdetailsAPP.expirationdate', expirationdate);
                         this.set('reservationdetailsAPP.refcode', guid);
                         this.set('reservationdetailsAPP.status', 'active');
-                        this.set('reservationdetailsAPP.type', 'On-Hold');
+                        this.set('reservationdetailsAPP.type', 'Reserved');
 
                         this.favrighthide = true;
                     }
