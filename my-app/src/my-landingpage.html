@@ -10,17 +10,117 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="my-icons.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/paper-input/paper-input-container.html">
+<link rel="import" href="../bower_components/iron-image/iron-image.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-menu-button/paper-menu-button.html">
 
 <dom-module id="my-landingpage">
     <template>
         <style>
             :host {
                 display: block;
+                overflow: hidden;
+            }
+
+            @media (min-width: 800px) {
+                .main-container {
+                    height: 100%;
+                    background-color: white;
+                    max-width: 370px;
+                    margin: 16px auto;
+                    padding: 40px;
+                    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+                }
+
+            }
+
+            @media (max-width: 800px) {
+                :host {
+                    height: 100vh;
+                }
+                .main-container {
+                    height: 100vh;
+                    background-color: white;
+                    margin: 0 auto;
+                    padding: 40px;
+                    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+                }
+
+            }
+
+            /* paper-button {
+                margin-left: 10px;
+                margin-right: 10px;
+            } */
+
+            paper-button.green {
+                background-color: var(--paper-green-500);
+                color: white;
+                height: 38px;
+         
+            }
+
+            .action {
+                /* display: inline-block; */
+                float: right;
+            }
+
+            .moreoption {
+                /* display: inline-block; */
+                float: left;
+            }
+
+            .footer {
+                height: 48px;
+                /* align-items: middle; */
+            }
+
+            .header {
+                font-size: 24px;
+                font-weight: 400;
             }
 
         </style>
 
-        <my-app></my-app>
+        <div class="main-container">
+            <iron-image placeholder="images/manifest/icon-512x512.png" data-src="images/manifest/icon-512x512.png" sizing="cover" preload
+                fade style="width:128px; height:128px;"></iron-image>
+            </br>
+            <div>
+                <div class="header">Sign in</div>
+                <div>to continue to Haven of Peace Memorial Garden inventory and reservation system</div>
+                </br>
+                <paper-input label="Email" value="demo@abc.com"></paper-input>
+                <paper-input label="Password" type="password" value="demo@abc.com"></paper-input>
+                </br>
+                </br>
+                <div class="footer">
+                    <div class="moreoption">
+                        <paper-menu-button>
+                            <div slot="dropdown-trigger" alt="menu" style="color: royalblue;">More options</div>
+                            <!-- <paper-item slot="dropdown-trigger" alt="menu">More Options</paper-item> -->
+                            <paper-listbox slot="dropdown-content">
+                                <paper-item>
+                                    <paper-button>Create Account</paper-button>
+                                </paper-item>
+                                <paper-item>
+                                    <paper-button>Forgot Password?</paper-button>
+                                </paper-item>
+                            </paper-listbox>
+                        </paper-menu-button>
+                    </div>
+                    <div class="action">
+                        <paper-button class="green">next</paper-button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- <my-app></my-app> -->
 
     </template>
 
